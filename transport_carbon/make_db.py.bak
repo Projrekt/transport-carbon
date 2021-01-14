@@ -3,8 +3,6 @@ Created on 16 Jan 2014
 
 @author: Jamie
 '''
-from __future__ import absolute_import
-from __future__ import print_function
 import sqlite3 as lite
 
 import pandas
@@ -41,5 +39,5 @@ with lite.connect("./db/defra_carbon.db") as con:
     cur.execute("SELECT Activity FROM Activities")
     rows = cur.fetchall()
     for row in rows:
-        print(row[0])
+        print row[0]
 

@@ -3,15 +3,14 @@ Created on 9 Jan 2014
 
 @author: Jamie
 '''
-from __future__ import absolute_import
 import math
 import requests
 import re
 
 from pygeocoder import Geocoder
 
-from . import stations
-from .g_directions import GoogleDirections
+import stations
+from g_directions import GoogleDirections
 
 ''' Distance conversion constants '''
 CHAINS_PER_MILE = 0.0125

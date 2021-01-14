@@ -3,7 +3,6 @@ Created on 9 Jan 2014
 
 @author: Jamie
 '''
-from __future__ import absolute_import
 import unittest
 
 from transport_carbon import *

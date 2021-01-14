@@ -3,14 +3,13 @@ Created on 15 Jan 2014
 
 @author: Jamie
 '''
-from __future__ import absolute_import
 import bisect
 import sqlite3 as lite
 import os
 
 from geopy import geocoders
 
-from . import distance
+import distance
 
 DIR = os.path.dirname(__file__)
 MAX_SHORT_HAUL_KM = 3700
@@ -189,7 +188,7 @@ class ActivityTable:
         with lite.connect(os.path.join(DIR, 'db/defra_carbon.db')) as con:
             cur = con.cursor()    
             cur.execute("SELECT * FROM %s" % self.table_name)
-            names = list([x[0] for x in cur.description])
+            names = list(map(lambda x: x[0], cur.description))
             return names
 
     @property
@@ -197,7 +196,7 @@ class ActivityTable:
         with lite.connect(os.path.join(DIR, 'db/defra_carbon.db')) as con:
             cur = con.cursor()    
             cur.execute("SELECT * FROM %s" % self.table_name)
-            names = list([x[0] for x in cur.description])
+            names = list(map(lambda x: x[0], cur.description))
             return [nm for nm in names if 'kg' in nm]
 
     @property
@@ -205,7 +204,7 @@ class ActivityTable:
         with lite.connect(os.path.join(DIR, 'db/defra_carbon.db')) as con:
             cur = con.cursor()    
             cur.execute("SELECT * FROM %s" % self.table_name)
-            names = list([x[0] for x in cur.description])
+            names = list(map(lambda x: x[0], cur.description))
             return [nm for nm in names if 'kg' not in nm]
 
     def get_factor(self, criteria):

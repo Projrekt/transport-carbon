@@ -1,12 +1,10 @@
 '''
     stations.py written to extract and use data in uk_stations.db
 '''
-from __future__ import absolute_import
 import sqlite3 as lite
 import os
 
 from geopy import geocoders, distance
-from six.moves import zip
 
 DIR = os.path.dirname(__file__)
 

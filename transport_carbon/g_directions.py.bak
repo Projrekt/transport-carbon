@@ -2,8 +2,7 @@
     g_directions.py Google Directions API wrapper,
     based on https://pypi.python.org/pypi/google.directions by D9T GmbH, Daniel Kraft.
 """
-from __future__ import absolute_import
-import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error, six.moves.urllib.request, six.moves.urllib.error, six.moves.urllib.parse
+import urllib, urllib2
 import json
 
 class GoogleDirections(object):
@@ -20,15 +19,15 @@ class GoogleDirections(object):
         self.origin = origin
         self.destination = destination
         url = self.url % (
-            six.moves.urllib.parse.quote(origin),
-            six.moves.urllib.parse.quote(destination),
+            urllib.quote(origin),
+            urllib.quote(destination),
         )
         if not headers:
             headers = {}
         if options:
-            url += six.moves.urllib.parse.urlencode(options)
-        req = six.moves.urllib.request.Request(url, None, headers)
-        res = six.moves.urllib.request.urlopen(req).read()
+            url += urllib.urlencode(options)
+        req = urllib2.Request(url, None, headers)
+        res = urllib2.urlopen(req).read()
         self.result = json.loads(res)
         return self
 
